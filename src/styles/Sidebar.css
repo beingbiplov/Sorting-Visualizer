@@ -9,10 +9,21 @@
 .sidebar_items{
 	margin:0;
 	color: white;
-	padding: 25px;
+	margin-top: 45px;
 	cursor: pointer;
+	font-size: 17px;
+	font-weight: bold;
 }
 
 .sidebar_items:hover{
 	color: #82113d;
+}
+
+button{
+	background-color: inherit;
+	border:none;
+}
+button:disabled{
+	color: grey;
+	cursor: not-allowed;
 }

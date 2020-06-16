@@ -1,13 +1,13 @@
 import React from 'react'
 import './styles/Sidebar.css'
 
-const Sidebar = (props) =>{
+const DisabledSideBar = (props) =>{
 	return(
 		<div className='sidebar'>
 			<button onClick={props.resetArray} className='sidebar_items'>New Array</button>
-			<h4 onClick = {props.bubbleSort} className='sidebar_items'>Bubble Sort</h4>
+			<button disabled onClick={props.resetArray} className='sidebar_items'>Bubble Sort</button>
 		</div>
 	)
 	
 }
-export default Sidebar
+export default DisabledSideBar
