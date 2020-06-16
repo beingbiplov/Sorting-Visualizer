@@ -1,0 +1,18 @@
+.sidebar{
+	background-color: black;
+	width: 200px;
+	height: 100vh;
+	text-align: center;
+	flex:1;
+}
+
+.sidebar_items{
+	margin:0;
+	color: white;
+	padding: 25px;
+	cursor: pointer;
+}
+
+.sidebar_items:hover{
+	color: #82113d;
+}

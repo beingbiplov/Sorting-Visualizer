@@ -1,0 +1,13 @@
+.bars-div{
+	position: absolute;
+	left: 25%;
+	top: 21%;
+}
+
+.bar{
+	width: 2px;
+	background-color: skyblue;
+	display: inline-block;
+	margin : 0 1px;
+
+}
