@@ -16,7 +16,7 @@
 }
 
 .sidebar_items:hover{
-	color: #82113d;
+	color: #f40856;
 }
 
 button{
@@ -26,4 +26,8 @@ button{
 button:disabled{
 	color: grey;
 	cursor: not-allowed;
+}
+
+.reset{
+	font-size: 25px;
 }

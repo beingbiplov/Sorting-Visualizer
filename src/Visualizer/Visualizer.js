@@ -7,7 +7,7 @@ import {getBubbleSort} from '../Algorithms/BubbleSort'
 
 const Visualizer = () =>{
 	const [array, setArray] = useState([])
-	const [isSorting, setSorting] = useState(false)
+	const [isSorting, setSorting ] = useState(false)
 
 	useEffect(() =>{
 		resetArray()
@@ -15,7 +15,7 @@ const Visualizer = () =>{
 
 	const resetArray = () =>{
 		let array =[]
-		for(let i=0; i<145; i++){
+		for(let i=0; i<20; i++){
 			array.push(randomInt(5,380))
 		}
 		setArray(array)
@@ -27,8 +27,8 @@ const Visualizer = () =>{
 	}
 
 	const bubbleSort = () =>{
-		//setSorting(true)
-		const [sortedArray, animations] = getBubbleSort(array)
+		setSorting(true)
+		const animations = getBubbleSort(array)
 		for (let i=0; i<animations.length; i++){
 			
 			const changeColor = i % 4 === 0 || i % 4 === 1
@@ -42,28 +42,27 @@ const Visualizer = () =>{
 				setTimeout(() =>{
 					barOneStyle.backgroundColor = barColor
 					barTwoStyle.backgroundColor = barColor
-				}, i * 7)
+				}, i * 200)
 			}
 			else{
 				const [barIdx, newHeight] = animations[i]
 				if (barIdx === -1){
 					continue
 				}
+				console.log(barIdx)
 				const barStyle = barsClass[barIdx].style
 				setTimeout(() => {
 					barStyle.height = `${newHeight}px`
 
-				}, i*7)
+				},i*200)
 					
 			}
-
-			//to disable sidebar when sorting 
-			// if (i === animations.length-1){
-			// 	setSorting(false)
-			// }
+			//to disable sidebar when sorting. Need better solution fot this!
+			setTimeout(()=>{
+				setSorting(false)
+			}, animations.length*200)
 			
 		}
-		
 
 	}
 
@@ -71,7 +70,6 @@ const Visualizer = () =>{
 		let sidebar = ''
 		if (isSorting){
 			sidebar = <DisabledSideBar 
-							resetArray = {resetArray}
 						/>
 		}
 		else{

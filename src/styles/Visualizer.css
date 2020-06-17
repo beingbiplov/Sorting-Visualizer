@@ -1,13 +1,13 @@
 .bars-div{
 	position: absolute;
 	left: 25%;
-	top: 21%;
+	bottom: 21%;
 }
 
 .bar{
-	width: 4px;
+	width: 25px;
 	background-color: turquoise;
 	display: inline-block;
-	margin : 0 1px;
+	margin : 0 7px;
 
 }

@@ -1,10 +1,10 @@
 export const getBubbleSort = (array) =>{
 	let animations = []
-	const unSortedArray = array.slice()
-	bubbleSort(array, animations)
+	const newArray = array.slice()
+	bubbleSort(newArray, animations)
 	// testing sorted aray against jsSort
-	//console.log(testResult(array, unSortedArray))
-	return [array, animations]
+	//console.log(testResult(newArray,array))
+	return animations
 }
 
 const bubbleSort = (array, animations) =>{
