@@ -3,6 +3,7 @@ import '../styles/Visualizer.css'
 import Sidebar from '../Sidebar'
 import DisabledSideBar from '../DisabledSideBar'
 import {getBubbleSort} from '../Algorithms/BubbleSort'
+import {getSelectionSort} from '../Algorithms/SelectionSort'
 
 
 const Visualizer = () =>{
@@ -19,6 +20,8 @@ const Visualizer = () =>{
 			array.push(randomInt(5,380))
 		}
 		setArray(array)
+		// for testing small arrays
+		//setArray([60,20,50, 70, 100, 30 , 40])
 		setSorting(false)
 	}
 
@@ -28,7 +31,7 @@ const Visualizer = () =>{
 
 	const bubbleSort = () =>{
 		setSorting(true)
-		const animations = getBubbleSort(array)
+		const [newArray, animations] = getBubbleSort(array)
 		for (let i=0; i<animations.length; i++){
 			
 			const changeColor = i % 4 === 0 || i % 4 === 1
@@ -49,7 +52,6 @@ const Visualizer = () =>{
 				if (barIdx === -1){
 					continue
 				}
-				console.log(barIdx)
 				const barStyle = barsClass[barIdx].style
 				setTimeout(() => {
 					barStyle.height = `${newHeight}px`
@@ -60,10 +62,51 @@ const Visualizer = () =>{
 			//to disable sidebar when sorting. Need better solution fot this!
 			setTimeout(()=>{
 				setSorting(false)
+				setArray(newArray)
 			}, animations.length*200)
 			
 		}
 
+	}
+
+	const selectionSort = () =>{
+		setSorting(true)
+		const [newArray, animations] = getSelectionSort(array)
+
+		for (let i=0; i<animations.length; i++){
+			const changeColor = i % 4 === 0 || i % 4 === 1
+			const barsClass = document.getElementsByClassName('bar')
+
+
+			if (changeColor){
+				const barColor = (i % 4 === 0 )? 'red' : 'turquoise'
+				const [barOneIdx, barTwoIdx] = animations[i]
+				const barOneStyle = barsClass[barOneIdx].style
+				const barTwoStyle = barsClass[barTwoIdx].style
+				setTimeout(() =>{
+					barOneStyle.backgroundColor = barColor
+					barTwoStyle.backgroundColor = barColor
+				}, i * 200)
+			}
+			else{
+				const [barIdx, newHeight] = animations[i]
+				if (barIdx === -1){
+					continue
+				}
+				const barStyle = barsClass[barIdx].style
+				setTimeout(() => {
+					barStyle.height = `${newHeight}px`
+
+				},i*200)
+					
+			}
+			//to disable sidebar when sorting. Need better solution fot this!
+			setTimeout(()=>{
+				setSorting(false)
+				setArray(newArray)
+			}, animations.length*200)
+
+		}
 	}
 
 	const getSideBar = () =>{
@@ -76,6 +119,7 @@ const Visualizer = () =>{
 			sidebar = <Sidebar 
 							resetArray = {resetArray}
 							bubbleSort = {bubbleSort}
+							selectionSort = {selectionSort}
 						/>
 		}
 		return sidebar
