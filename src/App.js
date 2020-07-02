@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Visualizer from './Visualizer/Visualizer'
 
 function App() {

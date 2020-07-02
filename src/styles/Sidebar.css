@@ -31,3 +31,13 @@ button:disabled{
 .reset{
 	font-size: 25px;
 }
+
+.fa-question-circle{
+	margin-left: 15px; 
+	color: grey;
+	cursor: pointer;
+	font-size: 12px;
+}
+.fa-question-circle:hover{
+	color: white;
+}
