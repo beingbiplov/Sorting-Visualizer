@@ -79,6 +79,47 @@ function SelectionSortModal(props) {
   );
 }
 
+function QuickSortModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Quick Sort
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>
+          Quicksort is a divide-and-conquer algorithm. 
+          It works by selecting a 'pivot' element from the array 
+          and partitioning the other elements into two sub-arrays, 
+          according to whether they are less than or greater than the pivot. 
+          The sub-arrays are then sorted recursively.
+
+        </p>
+        <p>
+          This algorithm is quite efficient for large-sized data sets as its average and 
+          worst-case complexity are O(nLogn) and Ο(n&sup2;), respectively.
+        </p>
+        <h4> Time Complexities: </h4>
+        <ul>  
+          <li>Worst Case Complexity: O(n&sup2;)</li>
+          <li>Best Case Complexity: O(nLogn)</li>
+          <li>Average Case Complexity: O(nLogn;)</li>
+        </ul>
+
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 function InsertionSortModal(props) {
   return (
     <Modal
@@ -123,6 +164,7 @@ const Sidebar = (props) =>{
 	const [BubbleModal, setBubbleModal] = React.useState(false);
   const [SelectionModal, setSelectionModal] = React.useState(false);
   const [InsertionModal, setInsertionModal] = React.useState(false);
+  const [QuickModal, setQuickModal] = React.useState(false);
 
 	return(
 		<div className='sidebar'>
@@ -143,6 +185,11 @@ const Sidebar = (props) =>{
 
         <i onClick={() => setInsertionModal(true)} className="fa fa-question-circle" aria-hidden="true"></i>
       </p>
+      <p>
+        <button onClick = {props.quickSort} className='sidebar_items'>Quick Sort</button>
+
+        <i onClick={() => setQuickModal(true)} className="fa fa-question-circle" aria-hidden="true"></i>
+      </p>
 			
 			
 			
@@ -158,6 +205,11 @@ const Sidebar = (props) =>{
       <InsertionSortModal
         show={InsertionModal}
         onHide={() => setInsertionModal(false)}
+      />
+      
+      <QuickSortModal
+        show={QuickModal}
+        onHide={() => setQuickModal(false)}
       />
 		</div>
 	)
